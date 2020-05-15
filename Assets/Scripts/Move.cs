@@ -29,7 +29,7 @@ public class Move : MonoBehaviour
         float v = Input.GetAxis("Mouse Y") * rotationV;
 
         me.transform.Rotate(new Vector3(0, h, 0));
-        transform.Rotate(new Vector3(v, 0, 0));
+        transform.Rotate(new Vector3(-v, 0, 0));
 
     }
 }
