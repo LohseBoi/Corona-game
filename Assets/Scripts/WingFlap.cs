@@ -11,8 +11,11 @@ public class WingFlap : MonoBehaviour
         wings.AddRange(gameObject.GetComponentsInChildren<Transform>());
         for (int i = 0; i < wings.Count; i++)
         {
-            if (wings[i].transform.name == "Bat" || wings[i].transform.name == "Head")
-                wings.Remove(wings[i]);
+            if (wings[i].name != "Left wing" && wings[i].name != "Right wing")
+            {
+                wings.RemoveAt(i);
+                i--;
+            }
         }
 
 
@@ -24,6 +27,7 @@ public class WingFlap : MonoBehaviour
     void Update()
     {
         transform.Translate(transform.forward * Time.deltaTime * 2);
+        //Turning. Perhaps in 8's?
     }
     IEnumerator FlapPrep()
     {
