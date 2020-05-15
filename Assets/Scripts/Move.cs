@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    public GameObject me;
     float speed = 10;
 
-    public Transform me;
     float rotationH = 5;
     float rotationV = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -23,13 +23,13 @@ public class Move : MonoBehaviour
         float translationX = Input.GetAxis("Horizontal") * speed;
         translationZ *= Time.deltaTime;
         translationX *= Time.deltaTime;
-        transform.Translate(translationX, 0, translationZ);
+        me.transform.Translate(translationX, 0, translationZ);
 
         float h = Input.GetAxis("Mouse X") * rotationH;
         float v = Input.GetAxis("Mouse Y") * rotationV;
-      
-        Vector3 rot = new Vector3(v, h, 0);
-        transform.Rotate(rot, Space.Self);
+
+        me.transform.Rotate(new Vector3(0, h, 0));
+        transform.Rotate(new Vector3(v, 0, 0));
 
     }
 }
