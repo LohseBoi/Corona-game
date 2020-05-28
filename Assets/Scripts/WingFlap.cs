@@ -26,7 +26,7 @@ public class WingFlap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * Time.deltaTime * 2);
+        transform.Translate(transform.forward * Time.deltaTime * 1.2f);
         //Turning. Perhaps in 8's?
     }
     IEnumerator FlapPrep()
@@ -38,7 +38,6 @@ public class WingFlap : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-
     IEnumerator Flap()
     {
         for (int i = 0; i < 40; i++)
@@ -54,5 +53,12 @@ public class WingFlap : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         StartCoroutine(Flap());
+    }
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.CompareTag("Human"))
+        {
+            transform.LookAt(col.transform.position);
+        }
     }
 }
