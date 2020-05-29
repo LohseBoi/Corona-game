@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     {
         switch (col.gameObject.tag)
         {
-            case "Bat":
+            case "Bat Body":
                 Destroy(col.transform.parent.gameObject);
                 Destroy(this.gameObject);
                 break;
@@ -32,6 +32,9 @@ public class Bullet : MonoBehaviour
                 break;
             case "Station":
 
+                break;
+            case "Finish":
+                Destroy(this.gameObject);
                 break;
             default:
 

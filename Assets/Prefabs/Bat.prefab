@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3419485359527484366}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 1797582516846371455}
   m_Layer: 0
   m_Name: Right eye
-  m_TagString: Untagged
+  m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 6570331415309897563}
   m_Layer: 0
   m_Name: Left eye
-  m_TagString: Untagged
+  m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 2131649603410722489}
   m_Layer: 0
   m_Name: Bat
-  m_TagString: Untagged
+  m_TagString: Bat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8815013b8a9414f4c9d19497f0dafb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopT: 0
 --- !u!54 &8499248505368537953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -441,7 +442,7 @@ GameObject:
   - component: {fileID: 8674662041175620632}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Bat
+  m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,7 +535,7 @@ GameObject:
   - component: {fileID: 8674662041191717392}
   m_Layer: 0
   m_Name: Left wing
-  m_TagString: Bat
+  m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,7 +628,7 @@ GameObject:
   - component: {fileID: 8674662042357527623}
   m_Layer: 0
   m_Name: Right wing
-  m_TagString: Bat
+  m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
