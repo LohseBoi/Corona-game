@@ -6,25 +6,28 @@ public class Human : MonoBehaviour
     private const float InfectionRadius = 1f;
     private const float InfectionThreshold = .5f;
     private const float RecoveryTime = 100;
-    private const float TickRate = 1000;
+    private const float TickRate = 1;
+    private const float Speed = 4;
 
     private float _time;
 
     private bool _infected;
     private ushort _recoveryProgress;
-    public GameObject Humans;
+    private GameObject _humans;
 
     // Start is called before the first frame update
     private void Start()
     {
-        if (Humans == null)
-            Debug.LogError("No human source list set.");
+        _humans = GameObject.FindWithTag("Active Humans");
+        if (_humans == null)
+            Debug.LogError("No human source list found.");
         
     }
 
-    // Update is called once per frame
     private void Update()
     {
+        transform.Translate(transform.forward * (Time.deltaTime * Speed));
+        
         _time += Time.deltaTime;
         if (!(_time > TickRate)) return;
         
@@ -44,7 +47,7 @@ public class Human : MonoBehaviour
 
     private void InfectionCheck()
     {
-        var humans = Humans.GetComponentsInChildren<Human>(false);
+        var humans = _humans.GetComponentsInChildren<Human>(false);
 
         foreach (var other in humans)
         {
