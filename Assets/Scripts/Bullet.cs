@@ -18,15 +18,25 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Bat")
-            Destroy(col.transform.parent.gameObject);
-            
-        else if (col.gameObject.tag == "Human")
+        switch (col.gameObject.tag)
         {
-            //Do sumtin
+            case "Bat":
+                Destroy(col.transform.parent.gameObject);
+                Destroy(this.gameObject);
+                break;
+            case "Human":
+
+                break;
+            case "Infected":
+
+                break;
+            case "Station":
+
+                break;
+            default:
+
+                break;
         }
-
-
-        Destroy(this.gameObject);
+        
     }
 }

@@ -6,7 +6,7 @@ public class Shoot : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject bullet, station;
-    bool fire = true;
+    public bool placeStation = true;
     void Start()
     {
 
@@ -19,7 +19,7 @@ public class Shoot : MonoBehaviour
         {
             Instantiate(bullet, transform.position + (transform.forward * 1.5f), transform.rotation);  //Shoot bullet
         }
-        if (Input.GetMouseButtonDown(1) && fire == true)  //Right
+        if (Input.GetMouseButtonDown(1) && placeStation == true)  //Right
         {
             Instantiate(station, new Vector3(transform.position.x + transform.forward.x * 1.25f, transform.position.y, transform.position.z + transform.forward.z * 1.25f), Quaternion.Euler(0, 0, 0));
             StartCoroutine(TakeTime());
@@ -28,8 +28,8 @@ public class Shoot : MonoBehaviour
 
     IEnumerator TakeTime()
     {
-        fire = false;
+        placeStation = false;
         yield return new WaitForSeconds(10);
-        fire = true;
+        placeStation = true;
     }
 }

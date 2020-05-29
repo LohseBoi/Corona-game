@@ -8,6 +8,8 @@ TagManager:
   - Human
   - Bullet
   - Special Field
+  - Infected
+  - Station
   layers:
   - Default
   - TransparentFX
