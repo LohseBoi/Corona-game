@@ -22,13 +22,13 @@ public class Shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && fire == true)  //Right
         {
             Instantiate(station, new Vector3(transform.position.x + transform.forward.x * 1.25f, transform.position.y, transform.position.z + transform.forward.z * 1.25f), Quaternion.Euler(0, 0, 0));
-            fire = false;
             StartCoroutine(TakeTime());
         }
     }
 
     IEnumerator TakeTime()
     {
+        fire = false;
         yield return new WaitForSeconds(10);
         fire = true;
     }

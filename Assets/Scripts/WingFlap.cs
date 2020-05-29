@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class WingFlap : MonoBehaviour
 {
+    
     List<Transform> wings = new List<Transform>();
     // Start is called before the first frame update
+    float speed = 1.2f;
     void Start()
     {
         wings.AddRange(gameObject.GetComponentsInChildren<Transform>());
@@ -26,7 +28,10 @@ public class WingFlap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * Time.deltaTime * 1.2f);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        Debug.Log(transform.forward);
+        Debug.Log(transform.rotation);
+        Debug.Log("JA");
         //Turning. Perhaps in 8's?
     }
     IEnumerator FlapPrep()
@@ -54,11 +59,11 @@ public class WingFlap : MonoBehaviour
         }
         StartCoroutine(Flap());
     }
-    private void OnTriggerStay(Collider col)
+    private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Human"))
-        {
-            transform.LookAt(col.transform.position);
+        { 
+            transform.LookAt(col.gameObject.transform);
         }
     }
 }
