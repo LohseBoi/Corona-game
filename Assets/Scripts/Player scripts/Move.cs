@@ -30,6 +30,12 @@ public class Move : MonoBehaviour
 
         me.transform.Rotate(new Vector3(0, h, 0));
         transform.Rotate(new Vector3(-v, 0, 0));
-
+        if (transform.rotation.x < -90)
+        {
+            transform.rotation = Quaternion.Euler(-90, 0, 0);
+            Debug.Log("wtf");
+        }
+        else if (transform.rotation.x > 35)
+            transform.rotation = Quaternion.Euler(35, 0, 0);
     }
 }

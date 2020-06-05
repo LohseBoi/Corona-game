@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4357191156753122251}
   - component: {fileID: 1797582516846371455}
   m_Layer: 0
-  m_Name: Right eye
+  m_Name: Left eye
   m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6973945477393872767}
   - component: {fileID: 6570331415309897563}
   m_Layer: 0
-  m_Name: Left eye
+  m_Name: Right eye
   m_TagString: Bat Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

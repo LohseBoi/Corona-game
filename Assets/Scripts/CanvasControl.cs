@@ -2,24 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CanvasControl : MonoBehaviour
 {
     // Start is called before the first frame update
     public Image circle;
     public GameObject control;
+    public Camera end;
+    public Canvas endC;
     List<Transform> canvas = new List<Transform>();
     float fill = 0f;
+    public TextMeshProUGUI time;
     void Start()
     {
+        Time.timeScale = 1;
+
+        end.gameObject.SetActive(false);
+        endC.gameObject.SetActive(false);
         circle.fillAmount = 0;
         foreach (Transform t in transform)
         {
-            if (t.name != "TIME")
+            if (t.name != "Text (TIME)")
                 canvas.Add(t);
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        StartCoroutine(TakeTime(50));
     }
 
     // Update is called once per frame
@@ -52,7 +62,6 @@ public class CanvasControl : MonoBehaviour
             control.GetComponent<Move>().enabled = !control.GetComponent<Move>().enabled;
         }
     }
-
     IEnumerator Hold()
     {
         while (fill < 1)
@@ -60,10 +69,28 @@ public class CanvasControl : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             fill += 0.001f;
             circle.fillAmount = fill;
-            Debug.Log(fill);
         }
         fill = 0f;
         circle.fillAmount = fill;
-        StopAllCoroutines();
+    }
+    IEnumerator TakeTime(int t)
+    {
+        if(t==0)
+        {
+            EndGame();
+            StopAllCoroutines();
+        }
+
+        time.text = t.ToString();
+        yield return new WaitForSeconds(1);
+        StartCoroutine(TakeTime(t - 1));
+    }
+    void EndGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        end.gameObject.SetActive(true);
+        endC.gameObject.SetActive(true);
+        Destroy(control);
+        Destroy(this.gameObject);
     }
 }

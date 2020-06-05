@@ -38,6 +38,7 @@ public class WingFlap : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         StartCoroutine(Flap());
+        StopCoroutine(FlapPrep());
     }
     IEnumerator Flap()
     {
@@ -63,7 +64,6 @@ public class WingFlap : MonoBehaviour
 
     public IEnumerator Turn()
     {
-        Debug.Log("Turn");
         int i = 0;
         while (i<360)
         {
@@ -95,34 +95,8 @@ public class WingFlap : MonoBehaviour
         if (col.gameObject.CompareTag("Human"))
         {
             stopT = true;
-            Debug.Log("Stopped");
             transform.LookAt(col.gameObject.transform);
         }
     }
-    private void OnTriggerStay(Collider col)
-    {
-        /*
-           float dis = Vector3.Distance(transform.position, col.transform.position);
-           Debug.Log(dis);
-           if (dis <= 3)// && col.gameObject.CompareTag("Human"))
-           {
-               col.gameObject.tag = "Infected";
-               Debug.Log("HIT");
-               transform.Rotate(new Vector3(90, 0, 0), Space.Self);
-
-               while(true) //Wait
-               {
-                   if (transform.position.y >= 4)
-                       break;
-                   else
-                       Debug.Log("Under");
-               }
-
-               transform.localRotation = Quaternion.Euler(0, transform.rotation.y, transform.rotation.z);
-               stopT = false;
-               StartCoroutine(Turn());
-
-           }
-           */
-    }
+  
 }
