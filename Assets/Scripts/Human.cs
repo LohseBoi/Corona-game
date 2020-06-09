@@ -26,7 +26,7 @@ public class Human : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(transform.forward * (Time.deltaTime * Speed));
+        transform.Translate(Vector3.forward * (Time.deltaTime * Speed));
         
         _time += Time.deltaTime;
         if (!(_time > TickRate)) return;

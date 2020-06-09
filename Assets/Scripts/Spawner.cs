@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
 			Instantiate(Prefab, Pool.transform, true);
 	}
 
-	void Update()
+	private void Update()
 	{
 		_lastSpawnTime += Time.deltaTime;
 		if (_lastSpawnTime > SpawnRate)
@@ -27,8 +27,13 @@ public class Spawner : MonoBehaviour
 			{
 				var child = Pool.transform.GetChild(0);
 				child.parent = Active.transform;
-				child.position = transform.position;
-				child.LookAt(Target.position);
+				
+				var localPosition = transform.localPosition;
+				child.position = localPosition;
+				var rotation = Quaternion.FromToRotation(child.transform.forward, Target.localPosition - localPosition);
+				rotation.x = 0;
+				rotation.z = 0;
+				child.rotation = rotation;
 			}
 		}
 	}
