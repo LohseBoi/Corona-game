@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WingFlap : MonoBehaviour
 {
-    
-    List<Transform> wings = new List<Transform>();
+    readonly List<Transform> wings = new List<Transform>();
     // Start is called before the first frame update
     readonly float speed = 1.2f;
     public bool stopT = false;
@@ -35,28 +34,24 @@ public class WingFlap : MonoBehaviour
         {
             wings[0].RotateAround(wings[0].parent.localPosition, transform.forward, -2);
             wings[1].RotateAround(wings[1].parent.localPosition, transform.forward, 2);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.004f);
         }
         StartCoroutine(Flap());
-        StopCoroutine(FlapPrep());
+      //  StopCoroutine(FlapPrep());
     }
     IEnumerator Flap()
     {
         for (int i = 0; i < 40; i++)
         {
-            //wings[0].RotateAround(wings[0].parent.localPosition, new Vector3(0, 0, -1), 2);
-            //wings[1].RotateAround(wings[1].parent.localPosition, new Vector3(0, 0, 1), 2);
             wings[0].RotateAround(wings[0].parent.localPosition, transform.forward, 2);
             wings[1].RotateAround(wings[1].parent.localPosition, transform.forward, -2);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.007f);
         }
         for (int i = 0; i < 40; i++)
         {
-            // wings[0].RotateAround(wings[0].parent.localPosition, new Vector3(0, 0, 1), 2);
-            // wings[1].RotateAround(wings[1].parent.localPosition, new Vector3(0, 0, -1), 2);
             wings[0].RotateAround(wings[0].parent.localPosition, transform.forward, -2);
             wings[1].RotateAround(wings[1].parent.localPosition, transform.forward, 2);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.004f);
         }
 
         StartCoroutine(Flap());
@@ -71,7 +66,6 @@ public class WingFlap : MonoBehaviour
                 break;
             //rotate right
             transform.Rotate(0, 1, 0);
-            //yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(0.05f);
             i++;
         }

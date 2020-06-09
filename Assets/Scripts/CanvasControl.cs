@@ -75,11 +75,8 @@ public class CanvasControl : MonoBehaviour
     }
     IEnumerator TakeTime(int t)
     {
-        if(t==0)
-        {
+        if (t == 0)
             EndGame();
-            StopAllCoroutines();
-        }
 
         time.text = t.ToString();
         yield return new WaitForSeconds(1);
@@ -87,7 +84,9 @@ public class CanvasControl : MonoBehaviour
     }
     void EndGame()
     {
+        StopAllCoroutines();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         end.gameObject.SetActive(true);
         endC.gameObject.SetActive(true);
         Destroy(control);
