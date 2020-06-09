@@ -11,6 +11,7 @@ TagManager:
   - Infected
   - Station
   - Bat Body
+  - Active People
   layers:
   - Default
   - TransparentFX
