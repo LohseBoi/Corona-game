@@ -5,9 +5,9 @@ using Random = UnityEngine.Random;
 public class Human : MonoBehaviour
 {
 	private const float InfectionRadius = .6f;
-	private const float InfectionThreshold = .75f;
+	private const float InfectionThreshold = .9f;
 	private const float RecoveryTime = 10;
-	private const float TickRate = 2;
+	private const float TickRate = 3;
 	private const float Speed = 4;
 
 	private float _time;
@@ -70,5 +70,13 @@ public class Human : MonoBehaviour
 				other.Infected = true;
 			}
 		}
+	}
+	private void OnTriggerEnter(Collider col)
+	{
+		if (col.CompareTag("Station"))
+		{
+			Infected = false;
+		}
+
 	}
 }
