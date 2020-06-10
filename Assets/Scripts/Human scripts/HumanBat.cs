@@ -17,11 +17,10 @@ public class HumanBat : MonoBehaviour
         col = transform.parent.GetComponent<MeshRenderer>();
         yellow = col.material;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void SetState(bool state)
     {
-        if (transform.parent.gameObject.CompareTag("Infected"))
+        if (state)
         {
             bats.SetActive(true);
             col.material = purple;
@@ -32,7 +31,7 @@ public class HumanBat : MonoBehaviour
             col.material = yellow;
         }
     }
-
+    
     IEnumerator Rot()
     {
         bats.transform.Rotate(0, -0.3f, 0);

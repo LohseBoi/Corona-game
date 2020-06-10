@@ -21,7 +21,8 @@ public class Infect : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Human"))
         {
-            col.gameObject.tag = "Infected";
+            var human = col.gameObject.GetComponent<Human>();
+            human.Infected = true;
             transform.parent.Rotate(new Vector3(-90, 0, 0), Space.Self);
             StartCoroutine(Hold());
         }
